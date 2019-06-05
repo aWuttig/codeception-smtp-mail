@@ -194,6 +194,16 @@ class Smtp extends Module
     }
 
     /**
+     * @param $name
+     * @return \PhpImap\IncomingMailAttachment[]
+     * @throws ModuleException
+     */
+    public function grabEmailAttachments($name)
+    {
+        return $this->getCurrentMail()->getAttachments();
+    }
+
+    /**
      * @param string $name
      *
      * @throws ModuleException
