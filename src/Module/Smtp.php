@@ -53,6 +53,23 @@ class Smtp extends Module
         $this->mail = null;
     }
 
+    /**
+     * @param $config
+     */
+    public function switchToAnotherEmailAccount($config)
+    {
+        $config = array_merge($this->config, $config);
+        $this->driver = new SMTPDriver($config);
+        $this->mail = null;
+    }
+
+    /**
+     * @param $config
+     */
+    public function switchBackToDefaultEmailAccount($config)
+    {
+        $this->_initialize();
+    }
 
     /**
      * @param string $criteria
