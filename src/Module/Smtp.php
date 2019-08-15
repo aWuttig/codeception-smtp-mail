@@ -64,9 +64,9 @@ class Smtp extends Module
     }
 
     /**
-     * @param $config
+     * @throws \Exception
      */
-    public function switchBackToDefaultEmailAccount($config)
+    public function switchBackToDefaultEmailAccount()
     {
         $this->_initialize();
     }
