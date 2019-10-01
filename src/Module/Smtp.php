@@ -5,6 +5,7 @@ use Codeception\Exception\ModuleException;
 use Codeception\Lib\Driver\SMTPDriver;
 use Codeception\Module;
 use PhpImap\IncomingMail;
+use PhpImap\Mailbox;
 
 /**
  * @author Ahmed Samy <ahmed.samy.cs@gmail.com>
@@ -250,7 +251,7 @@ class Smtp extends Module
      */
     public function deleteAllMails()
     {
-        // ...
+        return $this->driver->deleteAllMails();
     }
     
     /**

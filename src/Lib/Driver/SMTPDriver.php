@@ -127,6 +127,18 @@ class SMTPDriver
 
         return $matches;
     }
+
+    /**
+     *
+     */
+    public function deleteAllMails()
+    {
+        $mail_ids = $this->mailbox->searchMailbox('');
+        foreach ($mail_ids as $mail_id) {
+            $this->mailbox->deleteMail($mail_id);
+        }
+    }
+
     /**
      * @param $criteria
      *

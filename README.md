@@ -37,6 +37,7 @@ $ bin/codecept build
 - ``` canSeeEmailAttachmentsCount($count) ```
 - ``` canSeeEmailAttachment($name) ```
 - ``` countEmailsByCriteria($criteria) ```
+- ``` deleteAllMails() ```
 
 
 * $criteria is according to imap syntax, see http://php.net/manual/en/function.imap-search.php
