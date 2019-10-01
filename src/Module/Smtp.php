@@ -246,6 +246,14 @@ class Smtp extends Module
     }
 
     /**
+     *
+     */
+    public function deleteAllMails()
+    {
+        // ...
+    }
+    
+    /**
      * @param string $str
      * @param array $arr
      *
