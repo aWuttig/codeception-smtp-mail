@@ -13,10 +13,10 @@ use PhpImap\Mailbox;
 class Smtp extends Module
 {
     /** @var array */
-    protected array $requiredFields = ['username', 'password'];
+    protected $requiredFields = ['username', 'password'];
 
     /** @var array */
-    protected array $config = [
+    protected $config = [
         'username',
         'password',
         'imap_path' => '{imap.gmail.com:993/imap/ssl}INBOX',
@@ -119,16 +119,24 @@ class Smtp extends Module
         if (null === $urlFound) {
             throw new ModuleException($this, sprintf("can't find %s in the current email", $url));
         }
-        if ($this->hasModule('WebDriver')) {
-            $this->getModule('WebDriver')->amOnUrl($urlFound);
-        } elseif ($this->hasModule('PhpBrowser')) {
-            $this->getModule('PhpBrowser')->amOnUrl($urlFound);
-        } else {
+
+        $modules = $this->getModules();
+        $browserModule = null;
+        foreach ($modules  as $module) {
+            if ($module instanceof WebDriver || $module instanceof PhpBrowser) {
+                $browserModule = $module;
+            }
+        }
+
+        if ($browserModule === null) {
             throw new ModuleException(
                 $this,
                 "In order to click on links, you need to enable either `WebDriver` or `PhpBrowser` module"
             );
         }
+
+        $browserModule->amOnUrl($urlFound);
+
     }
 
     /**
