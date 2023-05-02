@@ -137,6 +137,7 @@ class SMTPDriver
         foreach ($mail_ids as $mail_id) {
             $this->mailbox->deleteMail($mail_id);
         }
+        $this->mailbox->expungeDeletedMails();
     }
 
     /**
